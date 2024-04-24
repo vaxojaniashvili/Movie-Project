@@ -16,7 +16,7 @@ const page = () => {
       console.log("error", error);
     }
   };
-  return (
+  return (  
     <div className="flex justify-center items-center">
       <div className="grid gap-5">
         <div className="flex gap-5 justify-center">
