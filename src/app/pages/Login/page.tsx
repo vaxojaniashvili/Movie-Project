@@ -1,9 +1,7 @@
-import React from 'react'
+import LoginInp from '@/app/common/components/Login'
 
 const Login = () => {
-  return (
-    <div>page</div>
-  )
+  return <LoginInp/>
 }
 
 export default Login
