@@ -7,11 +7,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const page = () => {
   const router = useRouter();
   const [user, setUser] = useAuthState(auth);
-  console.log(user);
+  console.log(auth?.currentUser?.email);
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      router.push("/");
+      router.push("/pages/Login");
     } catch (error) {
       console.log("error", error);
     }
@@ -31,7 +31,7 @@ const page = () => {
         <div>
           {user ? (
             <div>
-              {user.displayName} - {user.email}
+              {user.displayName}  {user.email}
             </div>
           ) : (
             ""
