@@ -46,6 +46,8 @@ const LoginInp = () => {
           type="password"
           placeholder="Password..."
         />
+        //vaxxxxxoo
+        
         <button
           onClick={handleLogin}
           className="bg-green-500 rounded text-white px-5"
