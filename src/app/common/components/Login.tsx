@@ -43,7 +43,7 @@ const LoginInp = () => {
         >
           Log-in
         </button>
-        <Link href="/">
+        <Link href="/pages/Sign-Up">
           <div className="flex bg-blue-500 rounded text-white px-5 justify-center">
             <button>Create a account</button>
           </div>

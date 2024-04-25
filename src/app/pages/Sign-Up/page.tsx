@@ -1,9 +1,9 @@
-import React from 'react'
+import Sign from "@/app/common/components/Sign"
 
 const SignUp = () => {
   return (
     <>
-    <SignUp/>
+    <Sign/>
     </>
   )
 }

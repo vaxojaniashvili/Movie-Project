@@ -1,9 +1,9 @@
 import React from 'react'
-import SignUpInput from './common/components/SignUp'
+import LoginInp from './common/components/Login'
 
 const home = () => {
   return (
-    <SignUpInput/>
+    <LoginInp/>
   )
 }
 
