@@ -9,18 +9,27 @@ const LoginInp = () => {
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const [loginError, setLoginError] = useState<string>("");
+
   const handleLogin = async () => {
     try {
       const res = await signInWithEmailAndPassword(email, password);
       console.log({ res });
-      setEmail("");
-      setPassword("");
-      router.push("/pages/profile");
+      if (res) {
+        setEmail("");
+        setPassword("");
+        router.push("/pages/profile");
+      } else {
+        setLoginError("rame errori");
+      }
     } catch (error) {
       console.log("error", error);
+      setLoginError("Incorrect email or password. Please try again.");
     }
   };
+
   return (
     <div>
       <div className="grid justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-5">
@@ -43,6 +52,7 @@ const LoginInp = () => {
         >
           Log-in
         </button>
+        {loginError && <p className="text-red-500">{loginError}</p>}
         <Link href="/pages/Sign-Up">
           <div className="flex bg-blue-500 rounded text-white px-5 justify-center">
             <button>Create a account</button>
