@@ -34,7 +34,7 @@ const page = () => {
               {user.displayName}  {user.email}
             </div>
           ) : (
-            ""
+            <>Loading...</>
           )}
         </div>
       </div>

@@ -3,41 +3,48 @@ import { auth } from "@/app/firebase";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const LoginInp = () => {
   const router = useRouter();
-  const [user, setUser] = useAuthState(auth);
-  const [emailValue, setEmailValue] = useState("");
-  const handleLogin = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const handleLogin = async () => {
     try {
-      {
-        auth.currentUser?.email === emailValue && router.push("/pages/profile");
-      }
-    } catch (error) {}
+      const res = await signInWithEmailAndPassword(email, password);
+      console.log({ res });
+      setEmail("");
+      setPassword("");
+      router.push("/pages/profile");
+    } catch (error) {
+      console.log("error", error);
+    }
   };
-  console.log(auth.currentUser?.email);
   return (
     <div>
       <div className="grid justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-5">
         <input
-          onChange={(e) => setEmailValue(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           className="border border-black"
           type="email"
           placeholder="Email..."
-          value={emailValue}
+          value={email}
         />
         <input
+          onChange={(e) => setPassword(e.target.value)}
           className="border border-black"
           type="password"
           placeholder="Password..."
         />
-        <button className="bg-gray-500 rounded text-white px-5">Log-in</button>
+        <button
+          onClick={handleLogin}
+          className="bg-green-500 rounded text-white px-5"
+        >
+          Log-in
+        </button>
         <Link href="/">
-          <div
-            onClick={handleLogin}
-            className="flex bg-blue-500 rounded text-white px-5 justify-center"
-          >
+          <div className="flex bg-blue-500 rounded text-white px-5 justify-center">
             <button>Create a account</button>
           </div>
         </Link>
