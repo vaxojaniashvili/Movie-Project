@@ -19,10 +19,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (password !== rePassword) {
-      setError("password do not match");
-      return;
-    }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       router.push("/pages/profile");
@@ -68,7 +64,18 @@ const SignUp = () => {
           value={rePassword}
         />
         {error ? <div className="text-red-500">{error}</div> : <div></div>}
-        <button className="bg-gray-500 rounded text-white px-5">Sign Up</button>
+        <button
+          onClick={() => {
+            if (password !== rePassword) {
+              setError("password do not match");
+            } else {
+              setError("");
+            }
+          }}
+          className="bg-gray-500 rounded text-white px-5"
+        >
+          Sign Up
+        </button>
         <div
           onClick={handleGoogleSignin}
           className="flex items-center gap-5 px-5 bg-blue-500 rounded text-white justify-center"
