@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import logo from "../assets/Movie.png";
 
 const LoginInp = () => {
   const router = useRouter();
@@ -31,33 +32,40 @@ const LoginInp = () => {
   };
 
   return (
-    <div>
-      <div className="grid justify-center items-center border border-red-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-5">
+    <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] ${loginError && "h-[450px]"} h-[430px] bg-[#161D2F] rounded-[20px]`}>
+      <img className="absolute top-[-150px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"src={logo.src} />
+      <h1 className="flex w-full font-outfit text-[32px] px-8 text-white my-8">
+        Login
+      </h1>
+      <div className="grid items-center gap-5 w-full font-outfit">
         <input
           onChange={(e) => setEmail(e.target.value)}
-          className="border border-black"
+          className="mx-8 py-3 placeholder:px-3 bg-transparent outline-none text-white border-[#5A698F] border-b"
           type="email"
-          placeholder="Email..."
+          placeholder="Email address"
           value={email}
         />
         <input
           onChange={(e) => setPassword(e.target.value)}
-          className="border border-black"
+          className="mx-8 py-3 placeholder:px-3 bg-transparent outline-none text-white border-[#5A698F] border-b"
           type="password"
           placeholder="Password..."
         />
         <button
           onClick={handleLogin}
-          className="bg-green-500 rounded text-white px-5"
+          className="bg-[#FC4747] rounded-md text-white px-5 mx-8 py-3 mt-5"
         >
-          Log-in
+          Login to your account
         </button>
-        {loginError && <p className="text-red-500">{loginError}</p>}
-        <Link href="/pages/Sign-Up">
-          <div className="flex bg-blue-500 rounded text-white px-5 justify-center">
-            <button>Create a account</button>
+        {loginError && <p className="flex justify-center text-red-500">{loginError}</p>}
+        <div className="flex text-white px-5 justify-center mx-8 mt-3">
+          <div className="flex gap-2">
+            <p>Don’t have an account?</p>
+            <Link href="/pages/Sign-Up">
+              <p className="text-[#FC4747]">Sign Up</p>
+            </Link>
           </div>
-        </Link>
+        </div>
       </div>
     </div>
   );
