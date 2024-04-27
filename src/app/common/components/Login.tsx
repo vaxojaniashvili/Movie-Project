@@ -22,7 +22,7 @@ const LoginInp = () => {
         setPassword("");
         router.push("/pages/profile");
       } else {
-        setLoginError("rame errori");
+        setLoginError("incorrect password or email address");
       }
     } catch (error) {
       console.log("error", error);
@@ -32,7 +32,7 @@ const LoginInp = () => {
 
   return (
     <div>
-      <div className="grid justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-5">
+      <div className="grid justify-center items-center border border-red-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-5">
         <input
           onChange={(e) => setEmail(e.target.value)}
           className="border border-black"
@@ -46,8 +46,6 @@ const LoginInp = () => {
           type="password"
           placeholder="Password..."
         />
-        //vaxxxxxoo
-        
         <button
           onClick={handleLogin}
           className="bg-green-500 rounded text-white px-5"

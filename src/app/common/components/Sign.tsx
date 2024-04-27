@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { auth } from "../../firebase";
 import {
   signInWithPopup,
@@ -69,10 +69,7 @@ const SignUp = () => {
           value={rePassword}
         />
         {error ? <div className="text-red-500">{error}</div> : <div></div>}
-        <button
-          type="submit"
-          className="bg-gray-500 rounded text-white px-5"
-        >
+        <button type="submit" className="bg-gray-500 rounded text-white px-5">
           Sign Up
         </button>
         <div
