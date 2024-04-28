@@ -20,7 +20,7 @@ const useProfile = () => {
     <div className="flex justify-center items-center">
       <div className="grid gap-5">
         <div className="flex gap-5 justify-center">
-          <h1 className="flex justify-center">Profile</h1>
+          <h1 className="flex justify-center text-white">Profile</h1>
           <button
             onClick={handleLogout}
             className="bg-black rounded text-white px-5"
@@ -30,11 +30,11 @@ const useProfile = () => {
         </div>
         <div>
           {user ? (
-            <div>
+            <div className="text-white">
               {user.displayName}  {user.email}
             </div>
           ) : (
-            <>Loading...</>
+            <div className="text-white">Loading...</div>
           )}
         </div>
       </div>
