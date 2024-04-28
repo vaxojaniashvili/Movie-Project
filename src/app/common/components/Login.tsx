@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import logo from "../assets/Movie.png";
+import Image from "next/image";
 
 const LoginInp = () => {
   const router = useRouter();
@@ -32,8 +33,18 @@ const LoginInp = () => {
   };
 
   return (
-    <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] ${loginError && "h-[450px]"} h-[430px] bg-[#161D2F] rounded-[20px]`}>
-      <img className="absolute top-[-150px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"src={logo.src} />
+    <div
+      className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] ${
+        loginError && "h-[450px]"
+      } h-[430px] bg-[#161D2F] rounded-[20px]`}
+    >
+      <Image
+        width={30}
+        height={30}
+        className="absolute top-[-150px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        src={logo.src}
+        alt={""}
+      />
       <h1 className="flex w-full font-outfit text-[32px] px-8 text-white my-8">
         Login
       </h1>
@@ -57,7 +68,9 @@ const LoginInp = () => {
         >
           Login to your account
         </button>
-        {loginError && <p className="flex justify-center text-red-500">{loginError}</p>}
+        {loginError && (
+          <p className="flex justify-center text-red-500">{loginError}</p>
+        )}
         <div className="flex text-white px-5 justify-center mx-8 mt-3">
           <div className="flex gap-2">
             <p>Don’t have an account?</p>

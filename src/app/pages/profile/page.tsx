@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const page = () => {
+const useProfile = () => {
   const router = useRouter();
   const [user, setUser] = useAuthState(auth);
   console.log(auth?.currentUser?.email);
@@ -42,4 +42,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default useProfile;
