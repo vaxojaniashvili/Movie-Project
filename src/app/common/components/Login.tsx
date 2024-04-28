@@ -41,7 +41,7 @@ const LoginInp = () => {
       <Image
         width={30}
         height={30}
-        className="absolute top-[-150px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="absolute top-[-120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         src={logo.src}
         alt={""}
       />

@@ -30,12 +30,12 @@ const SignUp = () => {
 
   return (
     <div
-      className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[450px] bg-[#161D2F] rounded-[20px]`}
+      className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[455px] sm:w-[400px] bg-[#161D2F] rounded-[20px] `}
     >
       <Image
         width={30}
         height={30}
-        className="absolute top-[-150px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="absolute top-[-120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         src={logo.src}
         alt={""}
       />
