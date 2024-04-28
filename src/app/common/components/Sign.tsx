@@ -8,9 +8,10 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import logo from '../assets/Movie.png'
 
 const SignUp = () => {
-  const googleAuth = new GoogleAuthProvider();
+  // const googleAuth = new GoogleAuthProvider();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,48 +32,58 @@ const SignUp = () => {
     }
   };
 
-  const handleGoogleSignin = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleAuth);
-      console.log(result);
-      router.push("/pages/profile");
-    } catch (error) {
-      console.error("Error signing in with Google:", error);
-    }
-  };
+  // const handleGoogleSignin = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, googleAuth);
+  //     console.log(result);
+  //     router.push("/pages/profile");
+  //   } catch (error) {
+  //     console.error("Error signing in with Google:", error);
+  //   }
+  // };d
 
   return (
-    <div>
-      <form
-        onSubmit={handleSubmit}
-        className="grid justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-5"
-      >
+    <div
+      className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[450px] bg-[#161D2F] rounded-[20px]`}
+    >
+      <img
+        className="absolute top-[-150px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        src={logo.src}
+      />
+
+      <h1 className="flex w-full font-outfit text-[32px] px-8 text-white my-8">
+        Sign Up
+      </h1>
+      <form onSubmit={handleSubmit} className="grid items-center gap-5 w-full">
         <input
-          className="border border-black"
+          className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5 font-outfit"
           type="email"
-          placeholder="Email..."
+          placeholder="Email address"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <input
-          className="border border-black"
+          className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5"
           type="password"
-          placeholder="Password..."
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
         <input
-          className="border border-black"
+          className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5"
           type="password"
-          placeholder="Re-Password..."
+          placeholder="Repeat password"
           onChange={(e) => setRePassword(e.target.value)}
           value={rePassword}
         />
         {error ? <div className="text-red-500">{error}</div> : <div></div>}
-        <button type="submit" className="bg-gray-500 rounded text-white px-5">
-          Sign Up
+        <button
+          type="submit"
+          className="bg-[#FC4747] rounded-md text-white px-5 mx-8 py-3 mt-[-15px]"
+        >
+          Create an account{" "}
         </button>
-        <div
+        {/* <div
           onClick={handleGoogleSignin}
           className="flex items-center gap-5 px-5 bg-blue-500 rounded text-white justify-center"
         >
@@ -82,14 +93,15 @@ const SignUp = () => {
             alt="google"
           />
           <button>Sign up with Google</button>
-        </div>
-        <Link href="/pages/Login">
-          <div className="flex justify-center items-center bg-blue-500 text-white px-5 rounded">
-            <button className="flex justify-center items-center bg-blue-500 text-white px-5 rounded">
-              Login
-            </button>
+        </div> */}
+        <div className="flex justify-center items-center text-white px-5 rounded">
+          <div className="flex justify-center items-center text-white px-5 rounded gap-2 font-outfit">
+            <p>Already have an account?</p>
+            <Link href="/pages/Login">
+              <p className="text-[#FC4747]">Login</p>
+            </Link>
           </div>
-        </Link>
+        </div>
       </form>
     </div>
   );

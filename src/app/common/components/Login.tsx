@@ -40,14 +40,14 @@ const LoginInp = () => {
       <div className="grid items-center gap-5 w-full font-outfit">
         <input
           onChange={(e) => setEmail(e.target.value)}
-          className="mx-8 py-3 placeholder:px-3 bg-transparent outline-none text-white border-[#5A698F] border-b"
+          className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5"
           type="email"
           placeholder="Email address"
           value={email}
         />
         <input
           onChange={(e) => setPassword(e.target.value)}
-          className="mx-8 py-3 placeholder:px-3 bg-transparent outline-none text-white border-[#5A698F] border-b"
+          className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5"
           type="password"
           placeholder="Password..."
         />
