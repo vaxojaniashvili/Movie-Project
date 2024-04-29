@@ -31,6 +31,16 @@ const SignUp = () => {
   };
   const handleKeyDown = (e: any) => {
     if (e.key === "Enter") {
+      if (!email) {
+        setEmailValidate(true);
+      } else {
+        setEmailValidate(false);
+      }
+      if (!password) {
+        setPasswordValidate(true);
+      } else {
+        setPasswordValidate(false);
+      }
       handleSubmit(e);
     }
   };
