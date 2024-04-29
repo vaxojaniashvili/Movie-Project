@@ -16,7 +16,7 @@ const SignUp = () => {
   const [emailValidate, setEmailValidate] = useState(false);
   const [passwordValidate, setPasswordValidate] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (password !== rePassword) {
       setError("Passwords do not match");
@@ -27,6 +27,11 @@ const SignUp = () => {
       router.push("/pages/Login");
     } catch (error) {
       console.log("Error", error);
+    }
+  };
+  const handleKeyDown = (e: any) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
     }
   };
 
@@ -46,6 +51,7 @@ const SignUp = () => {
       </h1>
       <form onSubmit={handleSubmit} className="grid items-center gap-5 w-full">
         <input
+          onKeyDown={handleKeyDown}
           className={`mx-8 py-3 bg-transparent outline-none text-white ${
             emailValidate ? "border-red-500" : "border-[#5A698F]"
           } border-b px-5 font-outfit`}
@@ -55,6 +61,7 @@ const SignUp = () => {
           value={email}
         />
         <input
+          onKeyDown={handleKeyDown}
           className={`mx-8 py-3 bg-transparent outline-none text-white ${
             passwordValidate ? "border-red-500" : "border-[#5A698F]"
           } border-b px-5`}
@@ -64,13 +71,18 @@ const SignUp = () => {
           value={password}
         />
         <input
+          onKeyDown={handleKeyDown}
           className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5"
           type="password"
           placeholder="Repeat password"
           onChange={(e) => setRePassword(e.target.value)}
           value={rePassword}
         />
-        {error ? <div className="flex text-red-500 justify-center">{error}</div> : <div></div>}
+        {error ? (
+          <div className="flex text-red-500 justify-center">{error}</div>
+        ) : (
+          <div></div>
+        )}
         <button
           onClick={() => {
             if (!email) {
