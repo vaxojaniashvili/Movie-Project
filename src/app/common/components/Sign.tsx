@@ -13,6 +13,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [error, setError] = useState("");
+  const [emailValidate, setEmailValidate] = useState(false);
+  const [passwordValidate, setPasswordValidate] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const SignUp = () => {
     }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      router.push("/pages/profile");
+      router.push("/pages/Login");
     } catch (error) {
       console.log("Error", error);
     }
@@ -44,14 +46,18 @@ const SignUp = () => {
       </h1>
       <form onSubmit={handleSubmit} className="grid items-center gap-5 w-full">
         <input
-          className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5 font-outfit"
+          className={`mx-8 py-3 bg-transparent outline-none text-white ${
+            emailValidate ? "border-red-500" : "border-[#5A698F]"
+          } border-b px-5 font-outfit`}
           type="email"
           placeholder="Email address"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <input
-          className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5"
+          className={`mx-8 py-3 bg-transparent outline-none text-white ${
+            passwordValidate ? "border-red-500" : "border-[#5A698F]"
+          } border-b px-5`}
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
@@ -64,8 +70,20 @@ const SignUp = () => {
           onChange={(e) => setRePassword(e.target.value)}
           value={rePassword}
         />
-        {error ? <div className="text-red-500">{error}</div> : <div></div>}
+        {error ? <div className="flex text-red-500 justify-center">{error}</div> : <div></div>}
         <button
+          onClick={() => {
+            if (!email) {
+              setEmailValidate(true);
+            } else {
+              setEmailValidate(false);
+            }
+            if (!password) {
+              setPasswordValidate(true);
+            } else {
+              setPasswordValidate(false);
+            }
+          }}
           type="submit"
           className="bg-[#FC4747] rounded-md text-white px-5 mx-8 py-3 mt-[-15px]"
         >
