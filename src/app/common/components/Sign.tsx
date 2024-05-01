@@ -54,7 +54,7 @@ const SignUp = () => {
       <Image
         width={30}
         height={30}
-        className="absolute top-[-120px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="absolute top-[-110px] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         src={logo.src}
         alt={""}
       />
