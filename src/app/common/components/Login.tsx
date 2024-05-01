@@ -80,8 +80,9 @@ const LoginInp = () => {
         <Button
           onClick={handleLogin}
           className="bg-[#FC4747] rounded-md text-white px-5 py-3 mt-5 w-full"
-          children="Login to your account"
-        />
+        >
+          Login to your account
+        </Button>
         {loginError && (
           <p className="flex justify-center text-red-500">{loginError}</p>
         )}

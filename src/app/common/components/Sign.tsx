@@ -116,8 +116,9 @@ const SignUp = () => {
           }}
           type="submit"
           className="bg-[#FC4747] rounded-md text-white px-5 mx-8 py-3 mt-[-15px]"
-          children="Create an account"
-        />
+        >
+          Create an account
+        </Button>
         <div className="flex justify-center items-center text-white px-5 rounded">
           <div className="flex justify-center items-center text-white px-5 rounded gap-2 font-outfit">
             <p>Already have an account?</p>
