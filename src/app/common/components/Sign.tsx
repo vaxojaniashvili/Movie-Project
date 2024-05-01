@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import logo from "../assets/Movie.png";
 import Image from "next/image";
+import Input from "./Input/Input";
+import Button from "./Button/Button";
 
 const SignUp = () => {
   const router = useRouter();
@@ -60,32 +62,38 @@ const SignUp = () => {
         Sign Up
       </h1>
       <form onSubmit={handleSubmit} className="grid items-center gap-5 w-full">
-        <input
+        <Input
           onKeyDown={handleKeyDown}
           className={`mx-8 py-3 bg-transparent outline-none text-white ${
             emailValidate ? "border-red-500" : "border-[#5A698F]"
           } border-b px-5 font-outfit`}
           type="email"
           placeholder="Email address"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+            setEmail(e.target.value)
+          }
           value={email}
         />
-        <input
+        <Input
           onKeyDown={handleKeyDown}
           className={`mx-8 py-3 bg-transparent outline-none text-white ${
             passwordValidate ? "border-red-500" : "border-[#5A698F]"
           } border-b px-5`}
           type="password"
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+            setPassword(e.target.value)
+          }
           value={password}
         />
-        <input
+        <Input
           onKeyDown={handleKeyDown}
           className="mx-8 py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5"
           type="password"
           placeholder="Repeat password"
-          onChange={(e) => setRePassword(e.target.value)}
+          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+            setRePassword(e.target.value)
+          }
           value={rePassword}
         />
         {error ? (
@@ -93,7 +101,7 @@ const SignUp = () => {
         ) : (
           <div></div>
         )}
-        <button
+        <Button
           onClick={() => {
             if (!email) {
               setEmailValidate(true);
@@ -108,9 +116,8 @@ const SignUp = () => {
           }}
           type="submit"
           className="bg-[#FC4747] rounded-md text-white px-5 mx-8 py-3 mt-[-15px]"
-        >
-          Create an account{" "}
-        </button>
+          children="Create an account"
+        />
         <div className="flex justify-center items-center text-white px-5 rounded">
           <div className="flex justify-center items-center text-white px-5 rounded gap-2 font-outfit">
             <p>Already have an account?</p>

@@ -6,12 +6,14 @@ import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import logo from "../assets/Movie.png";
 import Image from "next/image";
+import Input from "./Input/Input";
+import Button from "./Button/Button";
 
 const LoginInp = () => {
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  
+
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [loginError, setLoginError] = useState<string>("");
@@ -56,27 +58,30 @@ const LoginInp = () => {
         Login
       </h1>
       <div className="grid items-center gap-5 w-full font-outfit px-8 pb-8">
-        <input
+        <Input
           onKeyDown={handleKeyDown}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+            setEmail(e.target.value)
+          }
           className="py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5 w-full"
           type="email"
           placeholder="Email address"
           value={email}
         />
-        <input
+        <Input
           onKeyDown={handleKeyDown}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+            setPassword(e.target.value)
+          }
           className="py-3 bg-transparent outline-none text-white border-[#5A698F] border-b px-5 w-full"
           type="password"
           placeholder="Password..."
         />
-        <button
+        <Button
           onClick={handleLogin}
           className="bg-[#FC4747] rounded-md text-white px-5 py-3 mt-5 w-full"
-        >
-          Login to your account
-        </button>
+          children="Login to your account"
+        />
         {loginError && (
           <p className="flex justify-center text-red-500">{loginError}</p>
         )}
